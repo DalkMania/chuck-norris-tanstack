@@ -3,6 +3,8 @@ import { useChuckJoke } from '@/queries/useChuckJoke'
 import { Container } from './layout/Container'
 import { Loader } from './Loader'
 import ChuckImage from '@/assets/images/chuck-norris.jpg'
+import { Fragment } from 'react'
+import { Button } from './Button'
 
 export const ChuckJoke = () => {
   const { data: joke, refetch, isLoading } = useChuckJoke()
@@ -14,9 +16,14 @@ export const ChuckJoke = () => {
         {isLoading ? (
           <Loader />
         ) : (
-          <h2 className="font-extrabold text-4xl text-center text-shadow-lg/30 leading-12">
-            {joke?.value}
-          </h2>
+          <Fragment>
+            <Button variant={`secondary`} onClick={() => refetch()}>
+              Refresh Joke
+            </Button>
+            <h2 className="font-extrabold text-4xl text-center text-shadow-lg/30 leading-12">
+              {joke?.value}
+            </h2>
+          </Fragment>
         )}
       </div>
     </Container>

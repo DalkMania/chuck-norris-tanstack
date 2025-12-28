@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Container } from '@/components/layout/Container'
 import { useSticky } from '@/hooks/useSticky'
+import { Navigation } from '../Navigation'
 
 export const Header = () => {
   const headerRef = useRef(null)
@@ -26,6 +27,7 @@ export const Header = () => {
           <Link to="/">
             <h1 className="text-xl text-shadow-sm/30">Chuck Norris Jokes</h1>
           </Link>
+          <Navigation />
         </nav>
       </Container>
     </header>
