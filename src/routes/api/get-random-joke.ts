@@ -10,7 +10,7 @@ export const Route = createFileRoute('/api/get-random-joke')({
           const response = await fetch(
             'https://api.chucknorris.io/jokes/random',
           )
-          const data = await response.json()
+          const data = (await response.json()) as ChuckNorriesApiResponse
           if (response.ok) {
             return Response.json(data)
           } else {
