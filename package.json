@@ -12,6 +12,8 @@
     "check": "prettier --write . && eslint --fix"
   },
   "dependencies": {
+    "@fontsource-variable/hanuman": "^5.2.2",
+    "@fontsource-variable/rubik": "^5.2.8",
     "@tailwindcss/vite": "^4.0.6",
     "@tanstack/react-devtools": "^0.7.0",
     "@tanstack/react-query": "^5.66.5",
