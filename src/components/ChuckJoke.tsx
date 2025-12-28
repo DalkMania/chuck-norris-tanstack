@@ -11,7 +11,7 @@ export const ChuckJoke = () => {
 
   return (
     <Container className="grid h-full max-w-200">
-      <div className="flex flex-col items-center gap-y-4 mt-20">
+      <div className="flex flex-col items-center gap-y-4 my-20">
         <Image alt={`Chuck Norris`} src={ChuckImage} height={250} width={250} />
         {isLoading ? (
           <Loader />
