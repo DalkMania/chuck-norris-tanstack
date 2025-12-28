@@ -1,15 +1,13 @@
+import { Container } from './Container'
+
 export const Footer = () => {
   const date = new Date().getFullYear()
 
   return (
-    <footer>
-      <div className="mt-14 pt-8 px-5 border-t">
-        <div className="max-w-7xl mx-auto px-5">
-          <p className="text-center text-sm text-balance">
-            Copyright © {date} Chuck Norris Jokes. All rights reserved.
-          </p>
-        </div>
-      </div>
+    <footer className="py-4 border-t border-black/40 bg-black/35">
+      <Container>
+        <p>Copyright © {date} Niklas Dahlqvist</p>
+      </Container>
     </footer>
   )
 }

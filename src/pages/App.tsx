@@ -1,3 +1,5 @@
+import { ChuckJoke } from '@/components/ChuckJoke'
+
 export const App = () => {
-  return <div>Hi</div>
+  return <ChuckJoke />
 }

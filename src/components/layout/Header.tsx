@@ -7,12 +7,12 @@ export const Header = () => {
   const headerRef = useRef(null)
   const { isSticky } = useSticky(headerRef, 0)
   const defaultClasses = 'py-4 border-transparent'
-  const stickyClasses = 'py-3'
+  const stickyClasses = 'py-3 border-black/40'
 
   return (
     <header
       id="masthead"
-      className={`sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 ${
+      className={`sticky top-0 z-50 w-full border-b bg-black/35 backdrop-blur supports-backdrop-filter:bg-black/35 ${
         !isSticky ? defaultClasses : stickyClasses
       }`}
       role="banner"
@@ -23,10 +23,8 @@ export const Header = () => {
           className="header-navigation flex items-center justify-between"
           role="navigation"
         >
-          <Link to="/" className="flex gap-1">
-            <h1 className="text-3xl font-bold leading-16 pt-1">
-              chuck-norris-jokes
-            </h1>
+          <Link to="/">
+            <h1 className="text-xl text-shadow-sm/30">Chuck Norris Jokes</h1>
           </Link>
         </nav>
       </Container>
