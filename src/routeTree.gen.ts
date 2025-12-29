@@ -9,16 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ChuckMoviesRouteImport } from './routes/chuck-movies'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ChuckMoviesIndexRouteImport } from './routes/chuck-movies/index'
+import { Route as ChuckMoviesIdRouteImport } from './routes/chuck-movies/$id'
 import { Route as ApiGetRandomJokeRouteImport } from './routes/api/get-random-joke'
 
-const ChuckMoviesRoute = ChuckMoviesRouteImport.update({
-  id: '/chuck-movies',
-  path: '/chuck-movies',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -27,6 +23,16 @@ const AboutRoute = AboutRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChuckMoviesIndexRoute = ChuckMoviesIndexRouteImport.update({
+  id: '/chuck-movies/',
+  path: '/chuck-movies/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChuckMoviesIdRoute = ChuckMoviesIdRouteImport.update({
+  id: '/chuck-movies/$id',
+  path: '/chuck-movies/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiGetRandomJokeRoute = ApiGetRandomJokeRouteImport.update({
@@ -38,46 +44,59 @@ const ApiGetRandomJokeRoute = ApiGetRandomJokeRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/chuck-movies': typeof ChuckMoviesRoute
   '/api/get-random-joke': typeof ApiGetRandomJokeRoute
+  '/chuck-movies/$id': typeof ChuckMoviesIdRoute
+  '/chuck-movies': typeof ChuckMoviesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/chuck-movies': typeof ChuckMoviesRoute
   '/api/get-random-joke': typeof ApiGetRandomJokeRoute
+  '/chuck-movies/$id': typeof ChuckMoviesIdRoute
+  '/chuck-movies': typeof ChuckMoviesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/chuck-movies': typeof ChuckMoviesRoute
   '/api/get-random-joke': typeof ApiGetRandomJokeRoute
+  '/chuck-movies/$id': typeof ChuckMoviesIdRoute
+  '/chuck-movies/': typeof ChuckMoviesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/chuck-movies' | '/api/get-random-joke'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/api/get-random-joke'
+    | '/chuck-movies/$id'
+    | '/chuck-movies'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/chuck-movies' | '/api/get-random-joke'
-  id: '__root__' | '/' | '/about' | '/chuck-movies' | '/api/get-random-joke'
+  to:
+    | '/'
+    | '/about'
+    | '/api/get-random-joke'
+    | '/chuck-movies/$id'
+    | '/chuck-movies'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/api/get-random-joke'
+    | '/chuck-movies/$id'
+    | '/chuck-movies/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  ChuckMoviesRoute: typeof ChuckMoviesRoute
   ApiGetRandomJokeRoute: typeof ApiGetRandomJokeRoute
+  ChuckMoviesIdRoute: typeof ChuckMoviesIdRoute
+  ChuckMoviesIndexRoute: typeof ChuckMoviesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/chuck-movies': {
-      id: '/chuck-movies'
-      path: '/chuck-movies'
-      fullPath: '/chuck-movies'
-      preLoaderRoute: typeof ChuckMoviesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -90,6 +109,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chuck-movies/': {
+      id: '/chuck-movies/'
+      path: '/chuck-movies'
+      fullPath: '/chuck-movies'
+      preLoaderRoute: typeof ChuckMoviesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chuck-movies/$id': {
+      id: '/chuck-movies/$id'
+      path: '/chuck-movies/$id'
+      fullPath: '/chuck-movies/$id'
+      preLoaderRoute: typeof ChuckMoviesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/get-random-joke': {
@@ -105,8 +138,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  ChuckMoviesRoute: ChuckMoviesRoute,
   ApiGetRandomJokeRoute: ApiGetRandomJokeRoute,
+  ChuckMoviesIdRoute: ChuckMoviesIdRoute,
+  ChuckMoviesIndexRoute: ChuckMoviesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
