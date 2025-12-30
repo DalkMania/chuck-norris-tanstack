@@ -12,11 +12,6 @@ export const Navigation = () => {
       <NavigationMenuList className="flex gap-x-8">
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
-            <Link to="/about">About</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
             <Link to="/chuck-movies">Chuck Movies</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
