@@ -11,7 +11,10 @@ export const Route = createFileRoute('/chuck-movies/$id')({
   loader: async ({ params }) => {
     const foo = await getRuntimeVar()
     const tmdb = new TMDB(foo!)
-    const movie = await tmdb.movies.details(Number(params.id))
+    const movie = await tmdb.movies.details(Number(params.id), [
+      'videos',
+      'credits',
+    ])
     return movie
   },
   component: MovieDetails,

@@ -4,5 +4,5 @@ export const MovieDetails = () => {
   const routeApi = getRouteApi('/chuck-movies/$id')
   const data = routeApi.useLoaderData()
 
-  return <div>{JSON.stringify(data, null, 2)}</div>
+  return <pre>{JSON.stringify(data, null, 2)}</pre>
 }
