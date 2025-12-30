@@ -55,16 +55,14 @@ export const MovieDetails = () => {
           <h2 className="font-extrabold text-2xl text-shadow-lg/30 leading-12">
             Top Billed Cast
           </h2>
-          <ul className="flex gap-4">
+          <ul className="flex items-center gap-4 justify-between">
             {actors.map((actor) => (
               <li className="flex flex-col bg-white rounded-xl">
                 <img
                   src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
                   alt={actor.name}
-                  className="rounded-xl shadow-xl"
+                  className="rounded-t-xl h-44.5 w-46.25"
                 />
-                <p className="text-black">{actor.name}</p>
-                <p className="text-black">{actor.character}</p>
               </li>
             ))}
           </ul>
