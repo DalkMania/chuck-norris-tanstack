@@ -14,7 +14,7 @@ export const MovieDetails = () => {
   return (
     <>
       <Section
-        className={`w-full h-130 bg-no-repeat bg-cover relative`}
+        className={`w-full h-135 bg-no-repeat bg-cover relative`}
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path})`,
         }}
@@ -57,7 +57,7 @@ export const MovieDetails = () => {
           </h2>
           <ul className="flex items-center gap-4 justify-between">
             {actors.map((actor) => (
-              <li className="flex flex-col bg-white rounded-xl">
+              <li key={actor.id} className="flex flex-col bg-white rounded-xl">
                 <img
                   src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
                   alt={actor.name}
