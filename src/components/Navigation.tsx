@@ -1,14 +1,29 @@
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu'
 import { Link } from '@tanstack/react-router'
 
 export const Navigation = () => {
   return (
-    <ul className="flex gap-x-8">
-      <li>
-        <Link to={`/chuck-movies`}>Chuck Movies</Link>
-      </li>
-      <li>
-        <Link to={`/about`}>About</Link>
-      </li>
-    </ul>
+    <NavigationMenu>
+      <NavigationMenuList className="flex gap-x-8">
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild>
+            <Link to="/about">About</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild>
+            <Link to="/chuck-movies">Chuck Movies</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
   )
 }

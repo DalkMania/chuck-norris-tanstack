@@ -1,7 +1,15 @@
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { timeConvert } from '@/lib/utils'
 import { getRouteApi } from '@tanstack/react-router'
+import { Image } from '@unpic/react'
 
 export const MovieDetails = () => {
   const routeApi = getRouteApi('/chuck-movies/$id')
@@ -55,14 +63,24 @@ export const MovieDetails = () => {
           <h2 className="font-extrabold text-2xl text-shadow-lg/30 leading-12">
             Top Billed Cast
           </h2>
-          <ul className="flex items-center gap-4 justify-between">
+          <ul className="grid auto-rows-fr grid-cols-9 gap-4">
             {actors.map((actor) => (
-              <li key={actor.id} className="flex flex-col bg-white rounded-xl">
-                <img
-                  src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
-                  alt={actor.name}
-                  className="rounded-t-xl h-44.5 w-46.25"
-                />
+              <li key={actor.id} className="bg-white rounded-xl">
+                <Card className="max-w-md pt-0 flex flex-col shadow-none border-0">
+                  <CardContent className="p-0 shadow-none border-0">
+                    <Image
+                      src={`https://image.tmdb.org/t/p/w276_and_h350_face${actor.profile_path}`}
+                      alt={actor.name}
+                      height={350}
+                      width={276}
+                      className="rounded-t-xl object-cover block"
+                    />
+                  </CardContent>
+                  <CardHeader className="p-0 py-2 px-2 flex-1 shadow-none border-0">
+                    <CardTitle className="text-sm">{actor.name}</CardTitle>
+                    <CardDescription>{actor.character}</CardDescription>
+                  </CardHeader>
+                </Card>
               </li>
             ))}
           </ul>
